@@ -1,0 +1,48 @@
+body{
+	font-family: Artifakt Element, Verdana, Monospaced;
+	font-size: 16px;
+	background: url(Manufacturing_Post_Processor_Utility.png), rgba(180,180,180,1);
+    background-repeat: no-repeat;
+	background-position: 100% 625px;
+	background-size: contain;
+	padding: 15px;
+	background-attachment: fixed;
+
+}
+
+h1{
+	font-family: Artifakt Element, Verdana, Monospaced;
+	font-size: xx-large;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+td{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+td.center{
+	text-align: center;
+}
+
+}
+tr:nth-child(even) {
+    background-color: #c0c0b4;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffd8;
+}
+
+th{
+	background-color: #ffbf00;
+}

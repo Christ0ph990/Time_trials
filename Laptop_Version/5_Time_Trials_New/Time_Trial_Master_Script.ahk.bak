@@ -1,0 +1,104 @@
+﻿Script_Ini: ;{
+SetStoreCapsLockMode, On
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#SingleInstance Force
+SendMode, Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#Include %A_ScriptDir%\1_Assets\TT_Functions.ahk
+SetTitleMatchMode, 2
+;}
+
+Output_Ini: ;{ 
+
+	;{ System Info											; Bunch of info to write to report to track system hardware.
+	RegRead, CPUName, HKEY_LOCAL_MACHINE, HARDWARE\DESCRIPTION\System\CentralProcessor\0, ProcessorNameString
+	RegRead, OSName, HKEY_LOCAL_MACHINE, SOFTWARE\Microsoft\Windows NT\CurrentVersion, ProductName
+	VarSetCapacity( MEMORYSTATUSEX,64,2 ), NumPut( 64,MEMORYSTATUSEX ) 
+	DllCall( "GlobalMemoryStatusEx", UInt,&MEMORYSTATUSEX )
+	TotalPhys := NumGet( MEMORYSTATUSEX,8,"Int64"),   VarSetCapacity( PhysMem,16,0 )
+	TotalPhys := Round(TotalPhys/1073741824, 2)
+	FormatTime, SessionDate,,yyyy/MM/dd
+	;}
+	
+	;{ Product Info											; Info found in properties of exe.
+	WinGet, PMID, ProcessPath, ahk_exe pmill.exe			; Line currently hardcoded to find PowerMill Executables.
+	WinGetClass, WinClass, ahk_exe pmill.exe
+	ProductVersion := StrReplace(FileGetInfo(PMID).ProductVersion, ",", ".")
+	ProductName := FileGetInfo(PMID).ProductName
+	ProductName := Varize(ProductName)
+	FileVersion := StrReplace(FileGetInfo(PMID).FileVersion, ",", ".")
+	UID := StrReplace(Varize(WinClass),"0000000", "")
+	;}
+	
+	;{ Folder names											; Variables names for the folder structure.
+	O_FolderName := {}
+	Loop, Files, %A_ScriptDir%\*, D 						; Creating variable names for the folder structure, to easily jump around.
+	{					
+		O_FolderName.Push(A_LoopFilePath)
+	}
+	
+	Assets_Folder := O_FolderName[1]
+	Data_Folder := O_FolderName[2]
+	Macros_Folder := O_FolderName[3]
+	Results_Folder := O_FolderName[4]
+	Other_Folder := O_FolderName[5]
+	
+	txt_results_file := Results_Folder . "\txt_data\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].txt"
+	html_results_file := Results_Folder . "\html_reports\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].html"
+	;}
+	
+	;{ Initialise Reports									; Headers for txt and html reports.
+	cumulative_time := 0
+	FileAppend % SessionDate . "`n", % txt_results_file
+	FileAppend % FileVersion . "`n", % txt_results_file
+	FileAppend % "------------------------------------------------`n", % txt_results_file
+	
+	FileAppend % "<html>", % html_results_file
+	FileAppend % "`n<head>", % html_results_file
+	FileAppend % "`n<title>Time trials Macro results</title>", % html_results_file
+	FileAppend % "`n<LINK REL=STYLESHEET TYPE=""text/css"" HREF=""" . Assets_Folder . "\1_Other\reportstyle.css"">", % html_results_file
+	FileAppend % "`n</head>", % html_results_file
+	FileAppend % "`n<body>", % html_results_file
+	FileAppend % "`n<h1>Time Trial Results</h1><br>", % html_results_file
+	FileAppend % "`n<b>CPU:</b> " . CPUName . "<br>" . "<b>Memory:</b> " . TotalPhys . " GB<br>" . "<b>Operating System:</b> " . OSName . "<br>", % html_results_file
+	FileAppend % "`n<b>Codebase: </b>" . FileVersion . "<br>", % html_results_file
+	FileAppend % "`n<p>", % html_results_file
+	FileAppend % "`n<table border=1 COLS=2>", % html_results_file
+	FileAppend % "`n<tr>", % html_results_file
+	FileAppend % "`n<th>Trial Name</th>", % html_results_file
+	FileAppend % "`n<th>Completion Time</th>", % html_results_file
+	FileAppend % "`n</tr>", % html_results_file
+	;}
+	
+;}
+
+PowerMill_Ini: ;{ 											; Custom functions to write to PowerMill CMD window.
+	Get_CMD_Window() 										; Use a function to get the name of the control of the command window in PWRM. As it changes between builds for some reason.
+	Sleep, 7000
+	CMD_POST("CD " . Results_Folder)
+	CMD_POST("TRACEFILE OPEN ""PM_ERRORLOG.TXT""")
+	CMD_POST("DEBUG MESSAGETIMEOUT 0")
+	;CMD_POST("DIALOGS ERROR OFF")
+	;CMD_POST("DIALOGS MESSAGE OFF")
+;}
+
+PowerMill_Macros:
+	;PM_Macro("PMILL-7945")
+	;PM_Macro("PMILL-7560")
+	;PM_Macro("PMILL-Benchmark")
+	;PM_Macro("PMILL-6785")
+	;PM_Macro("PMILL-40633")
+	;PM_Macro("PMILL-5743")
+	;PM_Macro("PMILL-8298")
+	
+
+PowerMill_Fini: ;{											; Custom functions to write to PowerMill CMD window.
+CMD_POST("TRACEFILE CLOSE")
+	Finish_Reports()
+CMD_POST("PROJECT RESET NO")
+	Wait_Project_Reset()
+;CMD_POST("DIALOGS ERROR ON")
+;CMD_POST("DIALOGS MESSAGE ON")
+RunWait, % A_ScriptDir . "\1_Assets\Update_TT_Excel.exe"	; Run custom script to write results to excel, and post to wiki.
+CMD_POST("EXIT")
+;}

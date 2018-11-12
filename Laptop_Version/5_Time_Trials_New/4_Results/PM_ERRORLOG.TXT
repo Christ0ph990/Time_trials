@@ -1,0 +1,12 @@
+================================================================================
+Start Test: PMILL-6785.mac by barnesc
+Start Time: 18 OCT 2018 15.48.23
+Open Project
+---Loading Project Directory: 'PMILL-6785'
+---Last Saved: 18 Oct 2018 15.38.54 In PowerMILL Version 20.0.10.64.1187263
+---Read Featureset '1'
+---Read Model 'MultiHoleModelSave4'
+---Read Level '5'
+---Reading Active Entity Status
+---Activating Featureset '1'
+

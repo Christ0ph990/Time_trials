@@ -1,0 +1,268 @@
+FUNCTION MAIN (){
+
+//---[Variables]--------------------------------------------------------------------- FO
+//	$$\    $$\                    $$\           $$\       $$\                     
+//	$$ |   $$ |                   \__|          $$ |      $$ |                    
+//	$$ |   $$ |$$$$$$\   $$$$$$\  $$\  $$$$$$\  $$$$$$$\  $$ | $$$$$$\   $$$$$$$\ 
+//	\$$\  $$  |\____$$\ $$  __$$\ $$ | \____$$\ $$  __$$\ $$ |$$  __$$\ $$  _____|
+//	 \$$\$$  / $$$$$$$ |$$ |  \__|$$ | $$$$$$$ |$$ |  $$ |$$ |$$$$$$$$ |\$$$$$$\  
+//	  \$$$  / $$  __$$ |$$ |      $$ |$$  __$$ |$$ |  $$ |$$ |$$   ____| \____$$\ 
+//	   \$  /  \$$$$$$$ |$$ |      $$ |\$$$$$$$ |$$$$$$$  |$$ |\$$$$$$$\ $$$$$$$  |
+//	    \_/    \_______|\__|      \__| \_______|\_______/ \__| \_______|\_______/ 
+//------------------------------------------------------------------------------------
+	string list $working_dirs = {""}
+	string list $subtest_dirs = {""}
+	string list $macrotest_path = {""}
+	string list $macrotest_path_components = {""}
+	string $macrotest_datafolder = ""
+	string $macrotest_name = ""
+	string $test_name = ""
+	string $test_subname = ""
+	string $folder_name = ""
+	string $tracefile_name = "temp_file.txt"
+	int $test_subnumber = 0
+	int $folder_number = 0
+	//=====[INITIALISE MACRO TEST]====== FO
+		cd ..
+		$working_dirs = list_files("dirs",pwd())
+		$macrotest_path = tokens(macro_path(1), ".")
+		$macrotest_path_components = tokens(macrotest_path[0], "\")
+		$macrotest_name = remove_last($macrotest_path_components)
+		$test_subnumber = 0
+		CALL ibox_ini()
+		CALL navto_folder($working_dirs,"Assets")
+		CALL test_lock()
+	//FC
+	//FC
+//---------------------------------------------------------------------[Variables]--- 
+
+//---[Sub-Tests]--------------------------------------------------------------------- FO
+//	 $$$$$$\            $$\                $$\                           $$\               
+//	$$  __$$\           $$ |               $$ |                          $$ |              
+//	$$ /  \__|$$\   $$\ $$$$$$$\         $$$$$$\    $$$$$$\   $$$$$$$\ $$$$$$\    $$$$$$$\ 
+//	\$$$$$$\  $$ |  $$ |$$  __$$\ $$$$$$\\_$$  _|  $$  __$$\ $$  _____|\_$$  _|  $$  _____|
+//	 \____$$\ $$ |  $$ |$$ |  $$ |\______| $$ |    $$$$$$$$ |\$$$$$$\    $$ |    \$$$$$$\  
+//	$$\   $$ |$$ |  $$ |$$ |  $$ |         $$ |$$\ $$   ____| \____$$\   $$ |$$\  \____$$\ 
+//	\$$$$$$  |\$$$$$$  |$$$$$$$  |         \$$$$  |\$$$$$$$\ $$$$$$$  |  \$$$$  |$$$$$$$  |
+//	 \______/  \______/ \_______/           \____/  \_______|\_______/    \____/ \_______/ 
+//---------------------------------------------------------------------------------
+
+	//---[SUBTEST: Model Area-Clearance]----------------------------------------------- FO
+	$test_subname = "Model Area-Clearance"
+	//------------------------------------------------------------------------
+		GET EXAMPLES Seat.dgk
+		EDIT BLOCK ZLEN UNLOCK
+		EDIT BLOCKTYPE LIMITS
+		EDIT BLOCK RESETLIMIT "0"
+		EDIT BLOCK RESET
+		UNDRAW BLOCK
+		CREATE TOOL ; ENDMILL
+		EDIT TOOL "1" DIAMETER "12.7"
+		EDIT TOOLPATH SAFEAREA RESET
+		EDIT TOOLPATH LEADS LINK SKIM
+		EDIT TOOLPATH LEADS LONGLINK SKIM
+		EDIT TOOLPATH LEADS SAFELINK SKIM
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL trace_record_start($working_dirs, $tracefile_name)
+		CALL timer_start($test_subnumber, $test_name, $test_subname)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+			IMPORT TEMPLATE ENTITY TOOLPATH "3D-Area-Clearance\Model-Area-Clearance.ptf"
+			EDIT ZHEIGHTS AUTOMATIC ON
+			EDIT PAR 'RadialDepthOfCut.UserDefined' '1' EDIT PAR 'Stepover' ".31"
+			EDIT ZHEIGHTS AUTOMATIC STEPDOWN ".254"
+			EDIT PAR 'AreaClearance.Offset.RemoveCusps' '0'
+			EDIT PAR 'AreaClearance.Offset.Preference' 'minimise_air_moves'
+			EDIT TOOLPATH "1" CALCULATE
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL timer_end($macrotest_name) 
+		CALL trace_record_end($working_dirs, $tracefile_name)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+	
+	//-----------------------------------------------[SUBTEST: Model Area-Clearance]--- FC
+	
+	//---[SUBTEST: Raster Finishing]----------------------------------------------- FO
+	$test_subname = "Raster Finishing"
+	//------------------------------------------------------------------------
+
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL trace_record_start($working_dirs, $tracefile_name)
+		CALL timer_start($test_subnumber, $test_name, $test_subname)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+			IMPORT TEMPLATE ENTITY TOOLPATH "Finishing\Raster-Finishing.ptf"
+			EDIT PAR 'Tolerance' "0.0127"
+			EDIT PAR 'RasterAngle' "45"
+			EDIT PAR 'PatternStyle' 'two_way'
+			EDIT PAR 'RadialDepthOfCut.UserDefined' '1' Edit Par 'Stepover' ".0254"
+			EDIT TOOLPATH "2" CALCULATE
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL timer_end($macrotest_name) 
+		CALL trace_record_end($working_dirs, $tracefile_name)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+
+	//-----------------------------------------------[SUBTEST: Raster Finishing]--- FC
+
+	//---[SUBTEST: Constant-Z Finishing]----------------------------------------------- FO
+	$test_subname = "Constant-Z Finishing"
+	//------------------------------------------------------------------------
+		
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL trace_record_start($working_dirs, $tracefile_name)
+		CALL timer_start($test_subnumber, $test_name, $test_subname)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+
+			IMPORT TEMPLATE ENTITY TOOLPATH "Finishing\Constant-Z-Finishing.ptf"
+			EDIT PAR 'AxialDepthOfCut.UserDefined' '1' EDIT PAR 'Stepdown' "0.127"
+			EDIT TOOLPATH "3" CALCULATE
+
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL timer_end($macrotest_name) 
+		CALL trace_record_end($working_dirs, $tracefile_name)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+		
+	//-----------------------------------------------[SUBTEST: Constant-Z Finishing]--- FC
+
+	//---[SUBTEST: 3D-Offset Finishing]----------------------------------------------- FO
+	$test_subname = "3D-Offset Finishing"
+	//------------------------------------------------------------------------
+		
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL trace_record_start($working_dirs, $tracefile_name)
+		CALL timer_start($test_subnumber, $test_name, $test_subname)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+			IMPORT TEMPLATE ENTITY TOOLPATH "Finishing\3D-Offset-Finishing.ptf"
+			EDIT PAR 'RadialDepthOfCut.UserDefined' '1' Edit Par 'Stepover' "0.254"
+			EDIT TOOLPATH "4" CALCULATE
+		//›››››››››››››››››››››››››››››››››››››››››››››››››››››››››››››› FO
+		CALL timer_end($macrotest_name) 
+		CALL trace_record_end($working_dirs, $tracefile_name)
+		//‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹ FC
+		PROJECT RESET NO
+		
+	//-----------------------------------------------[SUBTEST: 3D-Offset Finishing]--- FC
+	
+	
+	//---[COMMAND: Unlock test]----------------------------------------------- FO
+		CALL navto_folder($working_dirs, "Assets")
+		CALL test_unlock()
+		CALL ibox_append($macrotest_name)
+	//-----------------------------------------------[COMMAND: Unlock test]--- FC
+	
+// FC
+//---------------------------------------------------------------------[Sub-Tests]---
+
+}	
+
+//---[Functions]--------------------------------------------------------------------- FO
+// $$$$$$$$\                              $$\     $$\                               
+// $$  _____|                             $$ |    \__|                              
+// $$ |   $$\   $$\ $$$$$$$\   $$$$$$$\ $$$$$$\   $$\  $$$$$$\  $$$$$$$\   $$$$$$$\ 
+// $$$$$\ $$ |  $$ |$$  __$$\ $$  _____|\_$$  _|  $$ |$$  __$$\ $$  __$$\ $$  _____|
+// $$  __|$$ |  $$ |$$ |  $$ |$$ /        $$ |    $$ |$$ /  $$ |$$ |  $$ |\$$$$$$\  
+// $$ |   $$ |  $$ |$$ |  $$ |$$ |        $$ |$$\ $$ |$$ |  $$ |$$ |  $$ | \____$$\ 
+// $$ |   \$$$$$$  |$$ |  $$ |\$$$$$$$\   \$$$$  |$$ |\$$$$$$  |$$ |  $$ |$$$$$$$  |
+// \__|    \______/ \__|  \__| \_______|   \____/ \__| \______/ \__|  \__|\_______/
+//-----------------------------------------------------------------------------------
+	
+	FUNCTION navto_folder(STRING LIST working_dirs, STRING folder_name) {
+		
+		INT folder_number = 0
+		
+		SWITCH $folder_name {
+			CASE 'Assets'
+				$folder_number = 0
+				BREAK
+			CASE 'Data'
+				$folder_number = 1
+				BREAK
+			CASE 'Macros'
+				$folder_number = 2
+				BREAK
+			CASE 'Results'
+				$folder_number = 3
+				BREAK
+			CASE 'Other'
+				$folder_number = 4
+				BREAK
+			DEFAULT
+				BREAK
+		}
+		STRING folder = $working_dirs[$folder_number]
+		cd $folder													
+	}
+	
+	FUNCTION navto_test_data(STRING LIST working_dirs, STRING macrotest_name, OUTPUT STRING macrotest_datafolder) {
+		cd $working_dirs[1]
+		$macrotest_datafolder = $pwd() + "/" + $macrotest_name											// Find the data subfolder for the macro name.
+		cd $macrotest_datafolder																		// Navigate to the matching data subfolder.	
+	}
+	
+	FUNCTION timer_start(OUTPUT INT test_subnumber, OUTPUT STRING test_name, OUTPUT STRING test_subname) {
+	
+		$test_subnumber = $test_subnumber + 1															// Increment test subnumber.
+		$test_name = $test_subnumber + ": " + $test_subname						// Generate sub test name.
+		PRINT = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		PRINT = $test_name
+		PRINT = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		CLOCK RESET QUIT
+		CLOCK ON QUIT
+	
+	}
+	
+	FUNCTION timer_end(STRING macrotest_name) {
+		PRINT = $macrotest_name + " time:"
+		CLOCK PRINT QUIT
+		CLOCK OFF QUIT
+	}
+	
+	FUNCTION trace_record_start(STRING LIST working_dirs, STRING tracefile_name) {
+		STRING starting_dir = $pwd()
+		cd $working_dirs[0]
+		TRACEFILE OPEN $tracefile_name
+		cd $starting_dir
+	}
+	
+	FUNCTION trace_record_end(STRING LIST working_dirs, STRING tracefile_name) {
+		STRING starting_dir = $pwd()
+		cd $working_dirs[0]
+		TRACEFILE CLOSE
+		STRING trace2file = "append_file.txt"
+		STRING LIST tracefile_contents = {""}
+		FILE OPEN $tracefile_name FOR READ AS convert_file
+		FILE READ $tracefile_contents FROM convert_file
+		FILE CLOSE convert_file
+		FILE OPEN $trace2file FOR APPEND AS append_file
+		FILE WRITE $tracefile_contents TO append_file
+		FILE CLOSE append_file
+		cd $starting_dir
+	}
+	
+	FUNCTION ibox_ini(){
+		// DIALOGS MESSAGE ON
+		INFOBOX NEW OUTWINDOW
+		INFOBOX STYLE NORMAL
+		INFOBOX STATE AUTO_NEWLINE TRUE
+		// DIALOGS MESSAGE OFF
+	}
+	
+	FUNCTION ibox_append(STRING macrotest_name){
+		// DIALOGS MESSAGE ON
+		STRING ibox_message = $macrotest_name + " complete"
+		INFOBOX APPEND $ibox_message
+		WAIT 5
+		// DIALOGS MESSAGE OFF
+		INFOBOX CLOSE
+	}
+	
+	FUNCTION test_lock() {
+		FILE OPEN "lock_file" FOR APPEND AS lock_file
+		FILE CLOSE lock_file 
+		cd ..
+	}
+	
+	FUNCTION test_unlock() {
+		STRING path2delete = $pwd() + "/lock_file"
+		DELETE FILE $path2delete
+		cd ..
+	}
+// FC
+//---------------------------------------------------------------------[Functions]---

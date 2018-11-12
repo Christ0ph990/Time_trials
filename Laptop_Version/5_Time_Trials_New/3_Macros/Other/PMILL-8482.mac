@@ -1,0 +1,101 @@
+//--------------------------------------------------
+//				Initialise Test Variables
+//--------------------------------------------------
+$session.macrotest_name = tokens(macro_path(1), ".")
+$session.test_subnumber = 0
+//--------------------------------------------------
+
+
+
+////////////////////////////////////////////////
+	$session.test_subname = "Load 90145291000-05-F1-EE 3 times"//
+//////////////////// FO ////////////////////////
+//FO —————————————————————————————————————————————————————————————————[ INITIALISE SUB-TEST ]————————————————————————————————————————————————————————————————————————
+	$session.test_subnumber = $session.test_subnumber + 1															// Increment test subnumber.
+	$session.test_name = $session.test_number + "." + $session.test_subnumber + ": " + $session.test_subname		// Generate sub test name.
+	print = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	print = $session.test_name																						// Write test name to error tracefile.
+	print = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	cd $session.working_dirs[1]																						// Navigate to Data folder.
+	$session.macrotest_datafolder = $pwd() + "/" + $session.macrotest_name[0]										// Find the data subfolder for the macro name.
+	cd $session.macrotest_datafolder																				// Navigate to the matching data subfolder.	
+//FC —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
+	//FO ———————————————————————————————————————————————————————————————————[ START ]———————————————————————————————————————————————————————————————————————————|
+		INT $count = 0
+		WHILE $count <= 2 {
+			$session.time_start = time()
+			PROJECT RECOVERY OPEN "D:\3_Time_Trials\1_Data\PMILL-8482\90145291000-05-F1-EE"
+			$session.time_end = time()
+			$session.time_delta = $session.time_end - $session.time_start
+			$session.time_cumulative = $session.time_cumulative + $session.time_delta
+			$session.duration = time_to_string($session.time_delta, "S")
+			$session.stringvar = {"[" + $session.macrotest_name[0] + "] - <" + $session.test_name + " " + $count + ">¬" + $session.duration}
+			file write $session.stringvar TO data_file
+			$session.stringvar = {"<tr>", "<td>[" + $session.macrotest_name[0] + "] - <" + $session.test_name + " " + $count, '><td class="center">' + $session.duration + "</td>", "</tr>"}
+			file write $session.stringvar TO result_file
+			$count = $count +1																							// FC
+			project reset NO
+		}	
+	//  —————————————————————————————————————————————————————————————————————[ END ]————————————————————————————————————————————————————————————————————————————|
+	
+	
+//FO ————————————————————————————————————————————————————————————————[ CALCULATE AND RECORD TEST TIME ]———————————————————————————————————————————————————————————————
+	//$session.time_delta = $session.time_end - $session.time_start
+	//$session.time_cumulative = $session.time_cumulative + $session.time_delta
+	//$session.duration = time_to_string($session.time_delta, "S")
+	//$session.stringvar = {"[" + $session.macrotest_name[0] + "] - <" + $session.test_name + ">¬" + $session.duration}
+	//file write $session.stringvar TO data_file
+	//$session.stringvar = {"<tr>", "<td>[" + $session.macrotest_name[0] + "] - <" + $session.test_name, '><td class="center">' + $session.duration + "</td>", "</tr>"}
+	//file write $session.stringvar TO result_file
+//FC ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— FC
+
+////////////////////////////////////////////////
+	$session.test_subname = "Load 1888_POS_20030_PUNZONE_+TASSELLI_FINITURE 3 times"//
+//////////////////// FO ////////////////////////
+//FO —————————————————————————————————————————————————————————————————[ INITIALISE SUB-TEST ]————————————————————————————————————————————————————————————————————————
+	$session.test_subnumber = $session.test_subnumber + 1															// Increment test subnumber.
+	$session.test_name = $session.test_number + "." + $session.test_subnumber + ": " + $session.test_subname		// Generate sub test name.
+	print = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	print = $session.test_name																						// Write test name to error tracefile.
+	print = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	cd $session.working_dirs[1]																						// Navigate to Data folder.
+	$session.macrotest_datafolder = $pwd() + "/" + $session.macrotest_name[0]										// Find the data subfolder for the macro name.
+	cd $session.macrotest_datafolder																				// Navigate to the matching data subfolder.	
+//FC —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
+	//FO ———————————————————————————————————————————————————————————————————[ START ]———————————————————————————————————————————————————————————————————————————|
+		$count = 0
+		WHILE $count <= 2 {
+			$session.time_start = time()
+			PROJECT RECOVERY OPEN "D:\3_Time_Trials\1_Data\PMILL-8482\1888_POS_20030_PUNZONE_+TASSELLI_FINITURE"
+			$session.time_end = time()
+			$session.time_delta = $session.time_end - $session.time_start
+			$session.time_cumulative = $session.time_cumulative + $session.time_delta
+			$session.duration = time_to_string($session.time_delta, "S")
+			$session.stringvar = {"[" + $session.macrotest_name[0] + "] - <" + $session.test_name + " " + $count + ">¬" + $session.duration}
+			file write $session.stringvar TO data_file
+			$session.stringvar = {"<tr>", "<td>[" + $session.macrotest_name[0] + "] - <" + $session.test_name + " " + $count, '><td class="center">' + $session.duration + "</td>", "</tr>"}
+			file write $session.stringvar TO result_file
+			$count = $count +1																							// FC
+			project reset NO			
+		}	
+	//  —————————————————————————————————————————————————————————————————————[ END ]————————————————————————————————————————————————————————————————————————————|
+	
+	
+//FO ————————————————————————————————————————————————————————————————[ CALCULATE AND RECORD TEST TIME ]———————————————————————————————————————————————————————————————
+	//$session.time_delta = $session.time_end - $session.time_start
+	//$session.time_cumulative = $session.time_cumulative + $session.time_delta
+	//$session.duration = time_to_string($session.time_delta, "S")
+	//$session.stringvar = {"[" + $session.macrotest_name[0] + "] - <" + $session.test_name + ">¬" + $session.duration}
+	//file write $session.stringvar TO data_file
+	//$session.stringvar = {"<tr>", "<td>[" + $session.macrotest_name[0] + "] - <" + $session.test_name, '><td class="center">' + $session.duration + "</td>", "</tr>"}
+	//file write $session.stringvar TO result_file
+//FC ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— FC
+
+
+

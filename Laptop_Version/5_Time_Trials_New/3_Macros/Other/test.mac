@@ -1,0 +1,2 @@
+print = "Succesfully loaded on startup"
+Exit

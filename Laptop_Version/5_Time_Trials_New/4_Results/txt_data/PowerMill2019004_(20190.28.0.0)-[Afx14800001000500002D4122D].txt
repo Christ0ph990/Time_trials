@@ -1,0 +1,18 @@
+2018/10/17
+20190.28.0.0
+------------------------------------------------
+[PMILL-7945] - <1: Load Project>¬0:00:35
+[PMILL-7945] - <2: Save Project>¬0:00:25
+[PMILL-7945] - <3: Calculate Stock Model States>¬0:00:43
+[PMILL-7560] - <1: Close project with large model>¬0:03:09
+[PMILL-Benchmark] - <1: Model Area-Clearance>¬1:04:37
+[PMILL-Benchmark] - <2: Raster Finishing>¬0:02:33
+[PMILL-Benchmark] - <3: Constant-Z Finishing>¬0:12:07
+[PMILL-Benchmark] - <4: 3D-Offset Finishing>¬0:05:23
+[PMILL-6785] - <1: Expand and select 4650 features>¬0:05:50
+[PMILL-6785] - <2: Close feature-heavy project>¬0:05:55
+[PMILL-6785] - <3: Delete large feature set>¬0:05:52
+[PMILL-40633] - <1: 3 Constant-Z & 3 Optimized Constant-Z>¬0:47:53
+[PMILL-5743] - <1: Calculate rest boundaries>¬0:00:57
+[PMILL-8298] - <1: Create 200 new tools>¬0:02:15
+[Total]¬2:38:14

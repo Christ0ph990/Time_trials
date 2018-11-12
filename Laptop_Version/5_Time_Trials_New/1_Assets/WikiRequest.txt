@@ -1,0 +1,8 @@
+#cacert="cacert.pem"
+# dump-header="headerdump.txt"
+user="barnesc:Adsk#990-"
+header="multipart/form-data"
+header="X-Atlassian-Token: nocheck"
+request="POST"
+form="file=@D:\\OneDrive - autodesk\\Combined_reports_master_main.csv"
+url="https://wiki.autodesk.com/rest/api/content/452661384/child/attachment/att460032575/data"

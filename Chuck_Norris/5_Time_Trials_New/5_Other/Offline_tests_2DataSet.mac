@@ -1,0 +1,88 @@
+//--------------------------------------------------
+//FO	Initialise Global (session) Variables
+//--------------------------------------------------
+sessionpar string A_ScriptDir = macro_path(0)
+cd $session.A_ScriptDir
+sessionpar int report_date = time()
+sessionpar string ARRAY $timestamp[] = tokens(local_time($session.report_date).timestamp, "-")
+sessionpar string $report_name = ""
+sessionpar string $data_name = ""
+sessionpar string list $stringvar = {""}
+sessionpar string list $working_dirs = {""}
+sessionpar string list $subtest_dirs = {""}
+sessionpar string list $macrotest_name = {""}
+sessionpar string macrotest_datafolder = ""
+sessionpar string $test_name = ""
+sessionpar string $test_subname = ""
+sessionpar int $test_number = 0
+sessionpar int $test_subnumber = 0
+sessionpar int $time_start = 0
+sessionpar int $time_end = 0
+sessionpar int $time_delta = 0
+sessionpar int $time_cumulative = 0
+sessionpar string $duration = ""
+//FC ------------------------------------------------
+
+
+//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+//FO															1. Initialise the report
+//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+$session.report_name = sanitize("$version") + "-(" + $codebase + ")-[" + $id + "]"
+$session.data_name = $session.report_name + ".txt"
+$session.report_name = $session.report_name + ".html"
+$session.working_dirs = list_files("dirs",pwd())
+cd $session.working_dirs[3] 																				// Navigate to Results folder.
+cd offline_data																								// Change to html_reports sub folder.
+File open $session.report_name FOR APPEND AS result_file													// Initialise the html report for writing.
+cd.. cd offline_data																						// Initialise the txt data for writing.
+File open $session.data_name FOR APPEND AS data_file														// Initialise the report for writing.
+//																											// Populate the string list with initial html.
+$session.stringvar = {"<html>", "<head>", "<title>Time trials Macro results</title>", '<LINK REL=STYLESHEET TYPE="text/css" HREF="' + $session.working_dirs[0] + '\reportstyle.css">', "</head>", "<body>", "<h1>Time Trial Results</h1>", "PowerMill codebase is <b>" + string($codebase) + "</b>.<br>", "This file is <b>" + $session.report_name + "</b>.<br>", "<p>", "<table border=1 COLS=2>", "<tr>", "<th>Trial Name</th>", "<th>Completion Time</th>", "</tr>"}
+File write $session.stringvar to result_file																// Write initial html to report.
+$session.stringvar = {$session.timestamp[0] + "/" + $session.timestamp[1] + "/" + $session.timestamp[2], string($codebase),"------------------------------------------------"}
+File write $session.stringvar TO data_file																	// Write Date and Version to txt.
+cd $session.working_dirs[3]
+DCAMTESTING TIMELOG "PM_TIMELOG.TXT"
+DCAMTESTING LOGFILE "PM_LOG.txt"
+tracefile open "PM_ERRORLOG.TXT"
+DIALOGS ERROR OFF
+DIALOGS MESSAGE OFF
+//FC ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//																2. Run Macros
+//FO
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+	//FO .......................................................................................................................................................
+		cd $session.working_dirs[2]																				// Navigate to Macro folder. 
+		$session.test_number = $session.test_number + 1															// Increment test number. FC
+		DCAMTESTING TESTSTART "barnesc" "PMILL-8482_2DataSet.mac"														// FO
+		DCAMTESTING TESTEND																						// 
+		print = ""																								// Blank line to parse error log more easily. FC
+	// .......................................................................................................................................................
+    
+
+//FC ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+//FO																3. Finish report html and close
+//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+tracefile close
+$session.duration = time_to_string($session.time_cumulative, "S")
+$session.stringvar = {"[Total]¬" + $session.duration}
+file write $session.stringvar TO data_file
+$session.stringvar = {"<tr>", "<td>[Total]", "<td class='center'>" + $session.duration + "</td>","</table>", "<p>", "</body>", "</html>"}
+file write $session.stringvar TO result_file
+File close result_file																						// Close the html report.
+File close data_file
+cd $session.working_dirs[3] cd html_reports
+project reset NO
+DIALOGS ERROR ON
+DIALOGS MESSAGE ON
+reset ALL
+Exit
+//FC ---------------------------------------------------------------------------------------------------------------------------------------------------------------

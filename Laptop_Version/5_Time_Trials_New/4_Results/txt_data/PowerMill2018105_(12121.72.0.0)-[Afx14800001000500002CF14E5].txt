@@ -1,0 +1,11 @@
+2018/10/17
+12121.72.0.0
+------------------------------------------------
+[PMILL-7945] - <1: Load Project>¬0:00:24
+[PMILL-7945] - <2: Save Project>¬0:00:24
+[PMILL-7945] - <3: Calculate Stock Model States>¬0:00:47
+[PMILL-7560] - <1: Close project with large model>¬0:03:05
+[PMILL-Benchmark] - <1: Model Area-Clearance>¬1:03:25
+[PMILL-Benchmark] - <2: Raster Finishing>¬0:02:47
+[PMILL-Benchmark] - <3: Constant-Z Finishing>¬0:11:56
+[PMILL-Benchmark] - <4: 3D-Offset Finishing>¬0:05:56
