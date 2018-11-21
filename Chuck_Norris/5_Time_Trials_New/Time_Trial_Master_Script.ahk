@@ -27,6 +27,18 @@ Output_Ini: ;{
 	ProductName := FileGetInfo(PMID).ProductName
 	ProductName := Varize(ProductName)
 	FileVersion := StrReplace(FileGetInfo(PMID).FileVersion, ",", ".")
+	
+	PMID := StrSplit(PMID, "\")
+	for k,v in PMID {
+		If InStr(v,"powermill") {
+			If v is alnum
+			{
+				v := StrReplace(v,"powermill","")
+				PMID := v
+			}
+		}
+	}
+	ProductName := PMID
 	UID := StrReplace(Varize(WinClass),"0000000", "")
 	;}
 	
