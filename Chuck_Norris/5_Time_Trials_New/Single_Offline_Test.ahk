@@ -43,31 +43,33 @@ Output_Ini: ;{
 	Results_Folder := O_FolderName[4]
 	Other_Folder := O_FolderName[5]
 	
-	txt_results_file := Results_Folder . "\txt_data\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].txt"
-	html_results_file := Results_Folder . "\html_reports\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].html"
+	offline_html_results_file := Results_Folder . "\offline_data\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].html"
+	offline_data_file := Results_Folder . "\offline_data\" .  ProductName . "_(" . FileVersion . ")-[" . UID "].txt"
 	;}
 	
 	;{ Initialise Reports									; Headers for txt and html reports.
 	cumulative_time := 0
-	FileAppend % SessionDate . "`n", % txt_results_file
-	FileAppend % FileVersion . "`n", % txt_results_file
-	FileAppend % "------------------------------------------------`n", % txt_results_file
+
+	FileAppend % SessionDate . "`n", % offline_data_file
+	FileAppend % FileVersion . "`n", % offline_data_file
+	FileAppend % "------------------------------------------------`n", % offline_data_file
 	
-	FileAppend % "<html>", % html_results_file
-	FileAppend % "`n<head>", % html_results_file
-	FileAppend % "`n<title>Time trials Macro results</title>", % html_results_file
-	FileAppend % "`n<LINK REL=STYLESHEET TYPE=""text/css"" HREF=""" . Assets_Folder . "\1_Other\reportstyle.css"">", % html_results_file
-	FileAppend % "`n</head>", % html_results_file
-	FileAppend % "`n<body>", % html_results_file
-	FileAppend % "`n<h1>Time Trial Results</h1><br>", % html_results_file
-	FileAppend % "`n<b>CPU:</b> " . CPUName . "<br>" . "<b>Memory:</b> " . TotalPhys . " GB<br>" . "<b>Operating System:</b> " . OSName . "<br>", % html_results_file
-	FileAppend % "`n<b>Codebase: </b>" . FileVersion . "<br>", % html_results_file
-	FileAppend % "`n<p>", % html_results_file
-	FileAppend % "`n<table border=1 COLS=2>", % html_results_file
-	FileAppend % "`n<tr>", % html_results_file
-	FileAppend % "`n<th>Trial Name</th>", % html_results_file
-	FileAppend % "`n<th>Completion Time</th>", % html_results_file
-	FileAppend % "`n</tr>", % html_results_file
+	FileAppend % "<html>", % offline_html_results_file
+	FileAppend % "`n<head>", % offline_html_results_file
+	FileAppend % "`n<title>Time trials Macro results</title>", % offline_html_results_file
+	FileAppend % "`n<LINK REL=STYLESHEET TYPE=""text/css"" HREF=""" . Assets_Folder . "\1_Other\reportstyle.css"">", % offline_html_results_file
+	FileAppend % "`n</head>", % offline_html_results_file
+	FileAppend % "`n<body>", % offline_html_results_file
+	FileAppend % "`n<h1>Time Trial Results</h1><br>", % offline_html_results_file
+	FileAppend % "`n<b>CPU:</b> " . CPUName . "<br>" . "<b>Memory:</b> " . TotalPhys . " GB<br>" . "<b>Operating System:</b> " . OSName . "<br>", % offline_html_results_file
+	FileAppend % "`n<b>Codebase: </b>" . FileVersion . "<br>", % offline_html_results_file
+	FileAppend % "`n<p>", % offline_html_results_file
+	FileAppend % "`n<table border=1 COLS=2>", % offline_html_results_file
+	FileAppend % "`n<tr>", % offline_html_results_file
+	FileAppend % "`n<th>Trial Name</th>", % offline_html_results_file
+	FileAppend % "`n<th>Completion Time</th>", % offline_html_results_file
+	FileAppend % "`n</tr>", % offline_html_results_file
+	
 	;}
 	
 ;}
@@ -83,22 +85,13 @@ PowerMill_Ini: ;{ 											; Custom functions to write to PowerMill CMD window
 ;}
 
 PowerMill_Macros:
-	PM_Macro("PMILL-7945")
-	PM_Macro("PMILL-7560")
-	PM_Macro("PMILL-Benchmark")
-	PM_Macro("PMILL-6785")
-	PM_Macro("PMILL-40633")
-	PM_Macro("PMILL-5743")
-	PM_Macro("PMILL-8298")
-	
+	Offline_PM_Macro("Offline")
+
 
 PowerMill_Fini: ;{											; Custom functions to write to PowerMill CMD window.
 CMD_POST("TRACEFILE CLOSE")
 	Finish_Reports()
 CMD_POST("PROJECT RESET NO")
 	Wait_Project_Reset()
-CMD_POST("DIALOGS ERROR ON")
-CMD_POST("DIALOGS MESSAGE ON")
-RunWait, % A_ScriptDir . "\1_Assets\Update_TT_Excel.exe"	; Run custom script to write results to excel, and post to wiki.
-CMD_POST("EXIT")
+;CMD_POST("EXIT")
 ;}

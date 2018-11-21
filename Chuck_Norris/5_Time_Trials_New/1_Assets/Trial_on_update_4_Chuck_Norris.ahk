@@ -16,16 +16,15 @@ Loop
 	If (TimeNow = User_entered_time and WinExist("ahk_exe pmill.exe") = false)
 	{	
 		Menu, Tray, Tip, Scheduled tests in progress.
-		Loop, Read, D:\5_Time_Trials_New\1_Assets\1_Other\builds_to_trial.txt
+		Loop, Read, C:\Users\Barnesc\Desktop\Card_Colors\assets\builds_to_trial.txt
 		{
-			NoMarks := StrReplace(A_LoopReadLine,"""", "")
-			FileContents.push(NoMarks)
+			ChuckNorris := StrReplace(A_LoopReadLine, "D:\PowerMill_Builds\", "Z:\")
+			FileContents.push(ChuckNorris)
 			;FileContents.push(A_LoopReadLine)
 		}
-		FileCopy, D:\5_Time_Trials_New\1_Assets\1_Other\blankfile.txt, D:\5_Time_Trials_New\1_Assets\1_Other\builds_to_trial.txt, 1
+		FileCopy, C:\Users\Barnesc\Desktop\Card_Colors\assets\blankfile.txt, C:\Users\Barnesc\Desktop\Card_Colors\assets\builds_to_trial.txt, 1
 		Loop % FileContents.length()
 		{
-			
 			While WinExist("ahk_exe pmill.exe")
 			{
 				Sleep, 10000

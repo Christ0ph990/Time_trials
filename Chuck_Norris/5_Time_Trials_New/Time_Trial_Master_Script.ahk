@@ -102,6 +102,7 @@ PowerMill_Macros:
 	PM_Macro("PMILL-40633")
 	PM_Macro("PMILL-5743")
 	PM_Macro("PMILL-8298")
+	PM_Macro("PMILL-9400")
 	
 
 PowerMill_Fini: ;{											; Custom functions to write to PowerMill CMD window.

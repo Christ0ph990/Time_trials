@@ -1,0 +1,4 @@
+PRINT = "Starting Offline Test"
+string $A_ScriptDir = macro_path(0)
+cd $A_SCriptDir
+OLE FILEACTION 'OPEN' "Single_Offline_Test.ahk"

@@ -166,6 +166,7 @@ haystack := ""
 			}
 		}
 	}
+	Sleep, 2000
 	Return
 }
 
@@ -183,6 +184,61 @@ Global
 		}
 	}
 }
+
+
+Get_Offline_Test_Times(macro_name){
+global
+	o_parser := {}
+	o_test_names := {}
+	o_test_times := {}
+	marked := 0
+	needle := macro_name . " time:"
+	FileRead, haystack, % Assets_Folder . "\append_file.txt"
+	haystack := StrReplace(StrReplace(haystack, "`r`r", "`r"),"`r`n`r`n","`r`n") ; Remove blanks lines
+	Loop, Parse, haystack, `n, `r
+			{
+				o_parser.push(A_LoopField)
+			}
+	Loop % o_parser.length()
+	{
+		If (InStr(o_parser[A_Index], "~~~" )) AND (marked == 0)
+		{
+			marked := 1
+			o_test_names.push(o_parser[A_Index + 1])
+			continue
+		}
+		If (InStr(o_parser[A_Index], "~~~" )) AND (marked == 1)
+		{
+			marked := 0
+			continue
+		}
+		If (InStr(o_parser[A_Index], needle ))
+		{
+			o_test_times.push(o_parser[A_Index + 1])
+			continue
+		}
+	}
+	Loop % o_test_names.length()
+	{
+		raw_time_string := o_test_times[A_Index]
+		format_time_string := StrSplit(raw_time_string, A_Space)
+		recorded_time := Round(format_time_string[1], 0)
+		cumulative_time := Round(cumulative_time + recorded_time, 0)
+		recorded_time := FormatSeconds(recorded_time)
+		test_name := o_test_names[A_Index]
+		;-------------------------------------------------------------------------------------------------
+		FileAppend % "[" . macro_name . "] - <" . test_name . ">¬" . recorded_time . "`n", % offline_data_file
+		;--------------------------------------------------------------------------------------------------
+		
+		FileAppend % "`n<tr>", % offline_html_results_file
+		FileAppend % "`n<td>[" . macro_name . "] - <" . test_name, % offline_html_results_file
+		FileAppend % "`n><td class=""center"">" . recorded_time . "</td>", % offline_html_results_file
+		FileAppend % "`n</tr>", % offline_html_results_file
+	}
+	FileDelete, % Assets_Folder . "\append_file.txt"
+	Return
+}
+
 
 Get_Test_Times(macro_name){
 global
@@ -273,5 +329,17 @@ Global
 	CMD_POST("DCAMTESTING TESTEND")
 		Wait_Test_Complete()
 		Get_Test_Times(macro_name)
+return
+}
+
+Offline_PM_Macro(macro_name){
+Global
+	CMD_POST("CD " . Macros_Folder)
+	CMD_POST("DCAMTESTING TESTSTART ""barnesc"" " . """" . macro_name . ".mac""")
+		Wait_CMD_Complete(macro_name)
+		Wait_Test_Complete()
+	CMD_POST("DCAMTESTING TESTEND")
+		Wait_Test_Complete()
+		Get_Offline_Test_Times(macro_name)
 return
 }
