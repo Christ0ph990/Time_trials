@@ -1,0 +1,300 @@
+type list
+version 0
+MachineTool\
+NCProgram\
+Toolpath\
+Toolpath\FIGURA\
+Toolpath\FIGURA\Desbaste_Figura\
+Toolpath\FIGURA\Desbaste_Figura\1_____planeado T50R3 +1
+Toolpath\FIGURA\Desbaste_Figura\2_____Rem+0.7_T50R3
+Toolpath\FIGURA\Desbaste_Figura\3_____Rem+0.7_T25R2
+Toolpath\FIGURA\Desbaste_Figura\4_____Semi_planas_b_T25R2
+Toolpath\FIGURA\Desbaste_Figura\5_____Rem+0.15_T16R3
+Toolpath\FIGURA\Desbaste_Figura\6_____Rem+0.15_T10R2_corto_CR
+Toolpath\FIGURA\Desbaste_Figura\7_____Rem+0.15_T10R2_RESTO_CS
+Toolpath\FIGURA\Desbaste_Figura\8_____Rem+0.15_T6R1.5_corto_CR
+Toolpath\FIGURA\Desbaste_Figura\9_____Rem+0.15_T6R1.5_RESTO_CS
+Toolpath\FIGURA\Desbaste_Figura\10_____Quitacrestas_Bola8
+Toolpath\FIGURA\Desbaste_Figura\11_____Rem+0.15_T4R1_CR
+Toolpath\FIGURA\Desbaste_Figura\12_____Rem+0.15_T4R1_CS
+Toolpath\FIGURA\Desbaste_Figura\13_____Rem+0.15_T3R0.5_CR
+Toolpath\FIGURA\Desbaste_Figura\14_____Rem+0.15_T3R0.5_CS
+Toolpath\FIGURA\Desbaste_Figura\15_____Rem+0.15_T2R0.5_CR
+Toolpath\FIGURA\Desbaste_Figura\16_____Rem+0.15_T2R0.5_CS
+Tool\
+Tool\PLATOS\
+Tool\PLATOS\Temple\
+Tool\PLATOS\Temple\T63 R4.4 [SC]
+Tool\PLATOS\Temple\T63 R4.4 [SM]
+Tool\PLATOS\Temple\T63 R4.4 [SL]
+Tool\PLATOS\Temple\T63 R4.4 [SLL]
+Tool\PLATOS\Temple\T25 R3 [SC]
+Tool\PLATOS\Temple\T25 R3 [SM]
+Tool\PLATOS\Temple\T25 R3 [SL]
+Tool\PLATOS\Temple\T25 R3 [SLL]
+Tool\PLATOS\Material Templado\
+Tool\PLATOS\Material Templado\T63 R3 [SC]
+Tool\PLATOS\Material Templado\T63 R3 [SM]
+Tool\PLATOS\Material Templado\T63 R3 [SL]
+Tool\PLATOS\Material Templado\T63 R3 [SLL]
+Tool\PLATOS\Material Templado\T50 R3 [SC]
+Tool\PLATOS\Material Templado\T50 R3 [SM]
+Tool\PLATOS\Material Templado\T50 R3 [SL]
+Tool\PLATOS\Material Templado\T50 R3 [SLL]
+Tool\PLATOS\Material Templado\T32 R2 [SC]
+Tool\PLATOS\Material Templado\T32 R2 [SM]
+Tool\PLATOS\Material Templado\T32 R2 [SL]
+Tool\PLATOS\Material Templado\T32 R2 [SLL]
+Tool\PLATOS\Material Templado\T25 R2 [SC]
+Tool\PLATOS\Material Templado\T25 R2 [SM]
+Tool\PLATOS\Material Templado\T25 R2 [SL]
+Tool\PLATOS\Material Templado\T25 R2 [SLL]
+Tool\PLATOS\Acabado\
+Tool\PLATOS\Acabado\PLANEAR Ø63_
+Tool\PLATOS\Acabado\ESCUADRAR Ø50_
+Tool\PLATOS\Acabado\Dijet T25 R0.5 [R]_
+Tool\PLATOS\Acabado\Dijet T25 R0.5 [C]_
+Tool\PLATOS\Acabado\Dijet T25 R2 [R]_
+Tool\PLATOS\Acabado\Dijet T25 R2 [C]_
+Tool\PLATOS\Acabado\T32 R0.8 [R_SM]
+Tool\PLATOS\Acabado\T32 R0.8 [R_SL]
+Tool\PLATOS\Acabado\T16 R0.8 [R_SM]
+Tool\PLATOS\Acabado\T16 R0.8 [R_SL]
+Tool\PLATOS\Acabado\Hitachi_Bola Ø16 [R_SM]
+Tool\PLATOS\Acabado\Hitachi_Bola Ø16 [R_SL]
+Tool\HTAS_TORICAS\
+Tool\HTAS_TORICAS\Serie Corta_CS\
+Tool\HTAS_TORICAS\Serie Corta_CS\T16 R3 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T12 R1 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T10 R2 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T10 R0.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T8 R0.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T6 R1.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T6 R0.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T4 R1 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T3 R0.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T2 R0.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\T1.5 R0.3 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CS\Cilíndrica Ø1.5 [R_SC]
+Tool\HTAS_TORICAS\Serie Corta_CR\
+Tool\HTAS_TORICAS\Serie Corta_CR\T12 R1 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T10 R2 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T10 R0.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T8 R0.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T6 R1.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T6 R0.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T4 R1 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T3 R0.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T2 R0.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\T1.5 R0.3 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Corta_CR\Cilíndrica Ø1.5 [R_SC][CR]
+Tool\HTAS_TORICAS\Serie Media_CS\
+Tool\HTAS_TORICAS\Serie Media_CS\T16 R3 [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T12 R1 [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T10 R2  [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T10 R0.5 [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T8 R0.5 [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T8 R0.5 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T6 R1.5 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T6 R0.5 [R_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T6 R0.5 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T4 R1 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T3 R0.5 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T3 R0.5 [C-1,5º_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T2 R0.5 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T2 R0.5 [C-1,5º_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T1.5 R0.3 [C_SM]
+Tool\HTAS_TORICAS\Serie Media_CS\T1.5 R0.3 [C-1,5º_SM]
+Tool\HTAS_TORICAS\Serie Media_CR\
+Tool\HTAS_TORICAS\Serie Media_CR\T12 R1 [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T10 R2  [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T10 R0.5 [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T8 R0.5 [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T8 R0.5 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T6 R1.5 [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T6 R1.5 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T6 R0.5 [R_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T6 R0.5 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T4 R1 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T3 R0.5 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T3 R0.5 [C-1,5º_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T2 R0.5 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T2 R0.5 [C-1,5º_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T1.5 R0.3 [C_SM][CR]
+Tool\HTAS_TORICAS\Serie Media_CR\T1.5 R0.3 [C-1,5º_SM][CR]
+Tool\HTAS_TORICAS\Serie Larga_CS\
+Tool\HTAS_TORICAS\Serie Larga_CS\T16 R3 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T12 R1 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T10 R2 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T10 R0.5 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T8 R0.5 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T8 R0.5 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T6 R1.5 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T6 R0.5 [R_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T6 R0.5 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T4 R1 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T3 R0.5 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T3 R0.5 [C-1.5º_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T2 R0.5 [C_SL]
+Tool\HTAS_TORICAS\Serie Larga_CS\T2 R0.5 [C-1.5º_SL]
+Tool\HTAS_TORICAS\Extra Largas_CS\
+Tool\HTAS_TORICAS\Extra Largas_CS\T16 R3 [R_SLL]
+Tool\HTAS_TORICAS\Extra Largas_CS\T10 R2 [R_SLL]
+Tool\HTAS_ESFERICAS\
+Tool\HTAS_ESFERICAS\Serie Corta_CS\
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø16 [R_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø12 [R_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø10 [R_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø8 [R_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø8 [C_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø6 [R_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø6 [C_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø6 [C-1,5º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø6 [C-3º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø4 [C_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø4 [C-1,5º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø4 [C-3º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø3 [C_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø3 [C-1,5º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø3 [C-5º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø2 [C-1,5º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø2 [C-6º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CS\Bola Ø1 [C-6º_SC]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø12 [R_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø10 [R_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø8 [R_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø8 [C_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø6 [R_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø6 [C_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø6 [C-1,5º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø6 [C-3º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø4 [C_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø4 [C-1,5º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø4 [C-3º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø3 [C_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø3 [C-1,5º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø3 [C-5º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø2 [C-1,5º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø2 [C-6º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Corta_CR\Bola Ø1 [C-6º_SC][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CS\
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø16 [R_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø12 [R_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø10 [R_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø8 [R_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø8 [C_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø6 [R_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø6 [C_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø6 [C-1,5º_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø4 [C_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø4 [C-1,5º_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø3 [C_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø3 [C-1,5º_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø2 [C_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø2 [C-1,5º_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CS\Bola Ø1 [C-3,5º_SM]
+Tool\HTAS_ESFERICAS\Serie Media_CR\
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø12 [R_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø10 [R_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø8 [R_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø8 [C_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø6 [R_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø6 [C_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø6 [C-1,5º_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø4 [C_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø4 [C-1,5º_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø3 [C_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø3 [C-1,5º_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø2 [C_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø2 [C-1,5º_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Media_CR\Bola Ø1 [C-3,5º_SM][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø16 [R_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø12 [R_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø10 [R_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø8 [R_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø8 [C_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø6 [R_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø6 [C_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø6 [C-1,5º_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø4 [C_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø4 [C-1,5º_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø3 [C_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø3 [C-1,5º_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø2 [C_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CS\Bola Ø2 [C-1,5º_SL]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø12 [R_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø10 [R_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø8 [R_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø8 [C_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø6 [R_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø6 [C_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø6 [C-1,5º_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø4 [C_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø4 [C-1,5º_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø3 [C_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø3 [C-1,5º_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø2 [C_SL][CR]
+Tool\HTAS_ESFERICAS\Serie Larga_CR\Bola Ø2 [C-1,5º_SL][CR]
+Tool\HTAS_ESFERICAS\Grabados_CS\
+Tool\HTAS_ESFERICAS\Grabados_CS\Grabados Ø0.3-20º_
+Tool\HTAS_ESFERICAS\Grabados_CS\Grabados Ø1-30º_
+Tool\HTAS_ESFERICAS\Grabados_CS\Grabados Ø1-60º_
+Tool\HTAS_ESFERICAS\Grabados_CR\
+Tool\HTAS_ESFERICAS\Grabados_CR\Grabados Ø0.3-20º [CR]
+Tool\HTAS_ESFERICAS\Grabados_CR\Grabados Ø1-30º [CR]
+Tool\HTAS_ESFERICAS\Grabados_CR\Grabados Ø1-60º [CR]
+Tool\Htas.Referencia\
+Tool\Htas.Referencia\Bola Ø10.4_REF
+Tool\Htas.Referencia\Bola Ø8.5_REF
+Tool\Htas.Referencia\Bola Ø8.4_REF
+Tool\Htas.Referencia\Bola Ø6.5_REF
+Tool\Htas.Referencia\Bola Ø6.4_REF
+Tool\Htas.Referencia\Bola Ø4.4_REF
+Tool\Htas.Referencia\Bola Ø3.4_REF
+Tool\Htas.Referencia\Bola Ø3.3_REF
+Tool\Htas.Referencia\Bola Ø2.3_REF
+Tool\Htas.Referencia\Bola Ø2.2_REF
+Boundary\
+Boundary\1
+Boundary\2
+Boundary\ref_quitacrestas
+Boundary\quitacrestas
+Boundary\ref_quitacrestas_T10r2
+Boundary\quitacrestas_T10r2
+Boundary\Restos pasos B6 sobre B8
+Boundary\Restos pasos B4 sobre B6
+Boundary\Restos pasos B3 sobre B4
+Boundary\Restos pasos B2 sobre B3
+Pattern\
+Featureset\
+Workplane\
+Workplane\Figura
+Level\
+Level\General
+Level\Planes
+Model\
+Model\Planes
+Model\GM___L3V+B2+202+LOWER_WJ_UPPER_CAVITY__________+R105+M00+150918_JF+URI_MC0_FU151016
+StockModel\
+StockModel\MR_REDESBASTE
+Group\
+Macro\
+Toolpath\
+Group\
+Pattern\
+Workplane\
+Setup\
+FeatureGroup\
+Boundary\
+Macro\
+Featureset\
+NCProgram\
+Level\
+Tool\
+Process\
+MachineTool\
+StockModel\
+Model\
